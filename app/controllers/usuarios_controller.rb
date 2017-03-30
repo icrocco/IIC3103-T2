@@ -20,8 +20,10 @@ class UsuariosController < ApplicationController
 
   # PUT /usuarios/:id
   def update
-    @usuario.update(usuario_params)
-    head :no_content
+    @usuario = Usuario.create!(usuario_params)
+    json_response(@usuario, :created)
+    #@usuario.update(usuario_params)
+    #head :no_content
   end
 
   # DELETE /usuarios/:id
