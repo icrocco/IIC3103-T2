@@ -3,19 +3,18 @@ class UsuariosController < ApplicationController
 
   # GET /usuario
   def index
-    @usuarios = Usuario.all
-    json_response({ usuarios: @usuarios})
+    json_response(Usuario.with_count)
   end
 
   # PUT /usuario
   def create
     @usuario = Usuario.create!(usuario_params)
-    json_response(@usuario, :created)
+    json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter}, :created)
   end
 
   # GET /usuarios/:id
   def show
-    json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter}, :created)
+    json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter})
   end
 
   # POST /usuario/:id
