@@ -11,7 +11,7 @@ class UsuariosController < ApplicationController
     if params[:id] != nil
       json_response({ error: "No se puede crear usuario con id" }, :bad_request)
     else
-      @usuario = User.new
+      @usuario = Usuario.new
       @usuario.nombre = params[:nombre]
       @usuario.apellido = params[:apellido]
       @usuario.usuario = params[:usuario]
