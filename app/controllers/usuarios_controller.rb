@@ -1,13 +1,13 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: [:show, :destroy]
 
-  # GET /usuarios
+  # GET /usuario
   def index
     @usuarios = Usuario.all
     json_response(@usuarios)
   end
 
-  # POST /usuarios
+  # PUT /usuario
   def create
     @usuario = Usuario.create!(usuario_params)
     json_response(@usuario, :created)
@@ -18,15 +18,13 @@ class UsuariosController < ApplicationController
     json_response(@usuario)
   end
 
-  # PUT /usuario
+  # POST /usuario/:id
   def update
-      @usuario = Usuario.create!(usuario_params)
-      json_response(@usuario, :created)
-    #@usuario.update(usuario_params)
-    #head :no_content
+    @usuario.update(usuario_params)
+    head :no_content
   end
 
-  # DELETE /usuarios/:id
+  # DELETE /usuario/:id
   def destroy
     @usuario.destroy
     head :no_content
