@@ -8,8 +8,12 @@ class UsuariosController < ApplicationController
 
   # PUT /usuario
   def create
-    @usuario = Usuario.create!(usuario_params)
-    json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter}, :created)
+    if params[:id] != nil
+      json_response({ error: "No se puede crear usuario con id" }, :bad_request)
+    else
+      @usuario = Usuario.create!(usuario_params)
+      json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter}, :created)
+    end
   end
 
   # GET /usuarios/:id
