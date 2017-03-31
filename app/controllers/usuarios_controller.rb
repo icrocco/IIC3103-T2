@@ -17,7 +17,7 @@ class UsuariosController < ApplicationController
       @usuario.usuario = params[:usuario]
       @usuario.twitter = params[:twitter]
       if @usuario.save
-        json_response(@usuario)
+        json_response(@usuario, :created)
       else
         json_response({ error: "La creación ha fallado" }, :internal_server_error)
       end
