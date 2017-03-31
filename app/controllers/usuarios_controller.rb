@@ -20,12 +20,8 @@ class UsuariosController < ApplicationController
 
   # POST /usuario/:id
   def update
-    if params[:id] != nil
-      json_response({ error: "Usuario no encontrado" }, :not_found)
-    else
       @usuario.update(usuario_params)
       head :no_content
-    end
   end
 
   # DELETE /usuario/:id
@@ -38,7 +34,7 @@ class UsuariosController < ApplicationController
 
   def usuario_params
     # whitelist params
-    params.permit(:usuario, :nombre, :apellido, :twitter, :id)
+    params.permit(:usuario, :nombre, :apellido, :twitter)
   end
 
   def set_usuario
