@@ -20,8 +20,12 @@ class UsuariosController < ApplicationController
 
   # POST /usuario/:id
   def update
-    @usuario.update(usuario_params)
-    head :no_content
+    if params[:id] != nil do
+      head :bad_request
+    else
+      @usuario.update(usuario_params)
+      head :no_content
+    end
   end
 
   # DELETE /usuario/:id
@@ -34,7 +38,7 @@ class UsuariosController < ApplicationController
 
   def usuario_params
     # whitelist params
-    params.permit(:usuario, :nombre, :apellido, :twitter)
+    params.permit(:usuario, :nombre, :apellido, :twitter, :id)
   end
 
   def set_usuario
