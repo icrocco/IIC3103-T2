@@ -12,11 +12,7 @@ class UsuariosController < ApplicationController
       json_response({ error: "No se puede crear usuario con id" }, :bad_request)
     else
       @usuario = Usuario.create!(usuario_params)
-      if @usuario
-        json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter}, :created)
-      else
-        json_response({ error: "La creación ha fallado" }, :internal_server_error)
-      end
+      json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter}, :created)
     end
   end
 
