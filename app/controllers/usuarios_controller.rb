@@ -21,7 +21,7 @@ class UsuariosController < ApplicationController
   # POST /usuario/:id
   def update
     if params[:id] != nil
-      json_response({ error: "id no es modificable" }, :bad_request)
+      json_response({ error: "Usuario no encontrado" }, :not_found)
     else
       @usuario.update(usuario_params)
       head :no_content
