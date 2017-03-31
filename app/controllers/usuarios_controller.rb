@@ -20,8 +20,12 @@ class UsuariosController < ApplicationController
 
   # POST /usuario/:id
   def update
+    if params[:usuario] == nil && params[:nombre] == nil && params[:apellido] == nil && params[:twitter] == nil
+      json_response({ error: "id no es modificable" }, :bad_request)
+    else
       @usuario.update(usuario_params)
       head :no_content
+    end
   end
 
   # DELETE /usuario/:id
