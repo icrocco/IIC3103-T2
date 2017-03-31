@@ -20,7 +20,7 @@ class UsuariosController < ApplicationController
 
   # POST /usuario/:id
   def update
-    if params[:id] != nil do
+    if params[:id] != nil
       head :bad_request
     else
       @usuario.update(usuario_params)
