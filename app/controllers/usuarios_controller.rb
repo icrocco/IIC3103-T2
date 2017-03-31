@@ -23,8 +23,11 @@ class UsuariosController < ApplicationController
     if params[:usuario] == nil && params[:nombre] == nil && params[:apellido] == nil && params[:twitter] == nil
       json_response({ error: "id no es modificable" }, :bad_request)
     else
-      @usuario.update(usuario_params)
-      head :no_content
+      if @usuario.update(usuario_params)
+        json_response(@usuario)
+      else
+        json_response({ error: "La modificación ha fallado" }, :internal_server_error)
+      end
     end
   end
 
