@@ -4,7 +4,7 @@ class UsuariosController < ApplicationController
   # GET /usuario
   def index
     @usuarios = Usuario.all
-    json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter}, :created)
+    json_response(@usuarios)
   end
 
   # PUT /usuario
@@ -15,7 +15,7 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/:id
   def show
-    json_response(@usuario)
+    json_response({id: @usuario.id, nombre: @usuario.nombre, apellido: @usuario.apellido, usuario: @usuario.usuario, twitter: @usuario.twitter})
   end
 
   # POST /usuario/:id
