@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :usuarios do
-  end
+  put '/usuario' => "usuarios#put", as: :put_usuario
+  get '/usuario/:id' => "usuarios#show", as: :get_usuario
 end

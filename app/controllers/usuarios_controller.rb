@@ -18,14 +18,10 @@ class UsuariosController < ApplicationController
     json_response(@usuario)
   end
 
-  # PUT /usuarios/:id
+  # PUT /usuario
   def update
-    if params[:id] != NULL
-      json_response(@usuario, :bad_request)
-    else
       @usuario = Usuario.create!(usuario_params)
       json_response(@usuario, :created)
-    end
     #@usuario.update(usuario_params)
     #head :no_content
   end
